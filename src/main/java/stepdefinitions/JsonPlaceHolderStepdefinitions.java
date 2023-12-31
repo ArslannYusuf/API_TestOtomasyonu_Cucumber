@@ -6,13 +6,10 @@ import io.cucumber.java.en.Then;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.json.JSONObject;
-import org.junit.Assert;
 import utilities.ConfigReader;
-
 import static io.restassured.RestAssured.given;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class JsonPlaceHolderStepdefinitions {
     String endPoint="";
@@ -42,27 +39,27 @@ public class JsonPlaceHolderStepdefinitions {
     @Then("jPH respons'da status degerinin {int}")
     public void jphResponsDaStatusDegerinin(int statusCode) {
         System.out.println(response.statusCode());
-        Assert.assertEquals(statusCode,response.statusCode());
+        assertEquals(statusCode,response.statusCode());
     }
 
 
     @And("jPH respons'da content type degerinin {string}")
     public void jphResponsDaContentTypeDegerinin(String contentType) {
-        Assert.assertEquals(contentType,response.contentType());
+        assertEquals(contentType,response.contentType());
     }
 
 
     @Then("jPH GET respons body'sinde {string} degerinin Integer {int}")
     public void jphGETResponsBodySindeDegerininInteger(String attribute, int value) {
         responseJP = response.jsonPath();
-        Assert.assertEquals(value,responseJP.getInt(attribute));
+        assertEquals(value,responseJP.getInt(attribute));
     }
 
 
     @And("jPH GET respons body'sinde {string} degerinin String {string}")
     public void jphGETResponsBodySindeDegerininString(String attribute, String value) {
         responseJP = response.jsonPath();
-        Assert.assertEquals(value,responseJP.getString(attribute));
+        assertEquals(value,responseJP.getString(attribute));
     }
 
 
@@ -94,10 +91,10 @@ public class JsonPlaceHolderStepdefinitions {
     @Then("response attribute degerlerinin {string},{string},{int} {int}")
     public void response_attribute_degerlerinin(String title, String body, Integer userId, Integer id) {
         responseJP = response.jsonPath();
-        Assert.assertEquals(title,responseJP.getString("title"));
-        Assert.assertEquals(body,responseJP.getString("body"));
-        Assert.assertEquals(userId,(Integer)responseJP.getInt("userId"));
-        Assert.assertEquals(id,(Integer)responseJP.getInt("id"));
+        assertEquals(title,responseJP.getString("title"));
+        assertEquals(body,responseJP.getString("body"));
+        assertEquals(userId,(Integer)responseJP.getInt("userId"));
+        assertEquals(id,(Integer)responseJP.getInt("id"));
     }
 
 }
