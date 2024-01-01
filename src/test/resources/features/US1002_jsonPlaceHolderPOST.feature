@@ -1,7 +1,7 @@
-Feature:
+Feature: US1002 kullanici JPH endpoint'ine Post request gonderir
 
   @Api @smoke @regression
-  Scenario:
+  Scenario: TC02 kullanici Post request sonucu donen response'i test eder (C36_Post_Bdd_JsonPlaceHolder)
 
     Given Kullanici "jPHBaseUrl" base URL'ini kullanir
     Then Path parametreleri icin "posts/70" kullanir
